@@ -1,7 +1,7 @@
 
 const merge = (state, payload) => {
   const value = state.mergeDeep(payload);
-  console.log('lvel2 merge',value);
+  console.log('level2 merge',value);
   return value;
 };
 
