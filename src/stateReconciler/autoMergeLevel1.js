@@ -1,5 +1,7 @@
 const merge = (state, payload) => {
-  return state.merge(payload)
+  const value = state.merge(payload);
+  console.log('lvel2 merge',value);
+  return value;
 };
 
 export default merge;
