@@ -1,6 +1,6 @@
 
 const merge = (state, payload) => {
-  return state.mergeDeepWith((oldVal, newVal) => newVal || oldVal, payload);
-}
+  return state.mergeDeep(payload);
+};
 
 export default merge;
