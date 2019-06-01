@@ -8,7 +8,7 @@ import {
   getStoredState,
   createPersistoid
 } from 'redux-persist'
-import { Map } from 'immutable';
+import { Map,fromJS } from 'immutable';
 import purgeStoredState from 'redux-persist/lib/purgeStoredState'
 import autoMergeLevel1 from './stateReconciler/autoMergeLevel1';
 
@@ -147,7 +147,7 @@ export default function persistReducer(config, baseReducer) {
           if (action.key === config.key) {
 
           let reducedState = baseReducer(restState, action);
-          let inboundState = action.payload
+          let inboundState = fromJS(action.payload);
           // only reconcile state if stateReconciler and inboundState are both defined
           let reconciledRest =
               stateReconciler !== false && inboundState !== undefined
