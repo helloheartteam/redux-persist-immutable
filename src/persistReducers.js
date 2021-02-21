@@ -5,12 +5,12 @@ import {
   PURGE,
   REHYDRATE,
   DEFAULT_VERSION,
-  getStoredState,
-  createPersistoid
+  getStoredState
 } from 'redux-persist'
 import { Map } from 'immutable';
 import purgeStoredState from 'redux-persist/lib/purgeStoredState'
 import autoMergeLevel1 from './stateReconciler/autoMergeLevel1';
+import createPersistoid from './createPersistoid';
 
 const defaultGetStoredState = getStoredState;
 
@@ -46,7 +46,7 @@ export default function persistReducer(config, baseReducer) {
     state.has('_persist') && state.get('_persist').get('rehydrated') &&
       _persistoid &&
       !_paused &&
-      _persistoid.update(state.toJS())
+      _persistoid.update(state)
 
     return state
   }
